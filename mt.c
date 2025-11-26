@@ -52,12 +52,16 @@ static unsigned long global_use_counter = 0;
 
 void dec_to_bin(unsigned long value, int bits, char *out_buffer)
 {
-    /* out_buffer debe tener al menos bits+1 bytes */
-    for (int i = bits - 1; i >= 0; --i) {
-        unsigned long mask = 1UL << i;
-        out_buffer[bits - 1 - i] = (value & mask) ? '1' : '0';
+    // out_buffer debe tener al menos bits+1 bytes, el +1 es para el carácter nulo (\0)
+    for (int i = bits - 1; i >= 0; --i) { //se comienza desde la izquierda hacia la derecha
+        unsigned long mask = 1UL << i; //aqui se crea una mascara donde 1 será estára en la i-esima posición
+        // el resto serán 0s
+        out_buffer[bits - 1 - i] = (value & mask) ? '1' : '0'; 
+        //^_ cuando se almacena un valor (value) c sabe cual es su valor en binario
+        // por tanto se hace la comparación si la mascara ([001]) y el valor de value ([101]) tienen 
+        // un 1 en la misma posición, si es así entonces se almacena un 1 en la posición i-1 del buffer
     }
-    out_buffer[bits] = '\0';
+    out_buffer[bits] = '\0'; //se agrega el carácter nulo al final del string en el buffer
 }
 
 /*
@@ -117,6 +121,7 @@ void tlb_init(void)
  *
  * Restricción: máximo 3 variables apuntador locales en esta función.
  */
+
 void tlb_lookup_and_update(uint32_t vaddr,
                            uint32_t page,
                            uint32_t offset,

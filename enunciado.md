@@ -5,12 +5,8 @@
 ## EJERCICIO PRÁCTICO DEL 22%
 
 Escriba un programa en C que realice la traducción de direcciones de memoria en un sistema
-que tiene un espacio virtual de direccionamiento de 32 bits con páginas de 4 KiB. El programa
-debe leer de manera indefinida y hasta que el usuario pulse la letra « **s** », una dirección en
-decimal y mostrar: (a) el número de página en decimal y en binario, (b) el desplazamiento
-dentro de la página en decimal y en binario, (c) el tiempo en segundos que tomó la operación
-y (d) si la traducción produce un TLB Hit o un TLB Miss. Para simular el TLB **debe** usar memoria
-en el segmento _heap_ del proceso ( **obligatorio** ). Implemente toda la lógica de la traducción
+que tiene un espacio virtual de direccionamiento de 32 bits con páginas de 4 KiB. El programa debe leer de manera indefinida y hasta que el usuario pulse la letra « **s** », una dirección en decimal y mostrar: (a) el número de página en decimal y en binario, (b) el desplazamiento dentro de la página en decimal y en binario, (c) el tiempo en segundos que tomó la operación
+y (d) si la traducción produce un TLB Hit o un TLB Miss. Para simular el TLB **debe** usar memoria en el segmento _heap_ del proceso(**obligatorio** ). Implemente toda la lógica de la traducción
 usando el TLB como caché, de acuerdo con los conceptos explicados en clase.
 
 Requisitos obligatorios en la implementación de la solución.
